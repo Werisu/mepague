@@ -1,0 +1,30 @@
+<div class="dashboard">
+  <app-page-header
+    title="MePague"
+    subtitle="Controle de valores emprestados"
+  />
+
+  <section class="summary">
+    <app-summary-card
+      label="Total emprestado"
+      [value]="totalEmprestado | currency:'BRL'"
+    />
+    <app-summary-card
+      label="Total pago"
+      [value]="totalPago | currency:'BRL'"
+      variant="paid"
+    />
+    <app-summary-card
+      label="Saldo pendente"
+      [value]="saldoPendente | currency:'BRL'"
+      variant="pending"
+    />
+  </section>
+
+  <app-transaction-form (submitForm)="onAddTransaction($event)" />
+
+  <app-transaction-table
+    [transactions]="transactions"
+    (statusToggle)="onToggleStatus($event)"
+  />
+</div>

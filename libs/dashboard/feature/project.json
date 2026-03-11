@@ -1,0 +1,7 @@
+{
+  "name": "dashboard-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/dashboard/feature/src",
+  "tags": ["type:feature", "scope:dashboard"]
+}

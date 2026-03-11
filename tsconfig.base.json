@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "emitDecoratorMetadata": false,
+    "target": "es2022",
+    "module": "preserve",
+    "lib": ["es2020", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@mepague/transactions-data-access": [
+        "libs/transactions/data-access/src/index.ts"
+      ],
+      "@mepague/shared-util": ["libs/shared/util/src/index.ts"],
+      "@mepague/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@mepague/dashboard-feature": [
+        "libs/dashboard/feature/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

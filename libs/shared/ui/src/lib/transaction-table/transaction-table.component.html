@@ -1,0 +1,39 @@
+<section class="transactions">
+  <h2 class="transactions__title">Lançamentos</h2>
+  @if (transactions().length === 0) {
+    <p class="transactions__empty">Nenhum lançamento registrado.</p>
+  } @else {
+    <div class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (transaction of transactions(); track transaction.id) {
+            <tr>
+              <td>{{ formatDate(transaction.date) }}</td>
+              <td>{{ transaction.description }}</td>
+              <td>{{ formatCurrency(transaction.value) }}</td>
+              <td>
+                <button
+                  type="button"
+                  class="status-badge"
+                  [class.status-badge--pending]="transaction.status === 'PENDING'"
+                  [class.status-badge--paid]="transaction.status === 'PAID'"
+                  (click)="onToggleStatus(transaction)"
+                >
+                  {{ transaction.status === 'PENDING' ? 'Pendente' : 'Pago' }}
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

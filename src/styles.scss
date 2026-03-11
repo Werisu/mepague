@@ -1,1 +1,9 @@
+@import "tailwindcss" source("./app");
+
+/* Monorepo: libs do workspace */
+@source "../libs/shared/ui";
+@source "../libs/shared/util";
+@source "../libs/transactions/data-access";
+@source "../libs/dashboard/feature";
+
 /* You can add global styles to this file, and also import other style files */

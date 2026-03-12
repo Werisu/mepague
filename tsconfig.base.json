@@ -27,6 +27,10 @@
       ],
       "@mepague/debtors-feature": [
         "libs/debtors/feature/src/index.ts"
+      ],
+      "@mepague/data-export": ["libs/data-export/src/index.ts"],
+      "@mepague/data-export-feature": [
+        "libs/data-export/feature/src/index.ts"
       ]
     }
   },

@@ -41,6 +41,14 @@ export class DebtorService {
     this.saveToStorage();
   }
 
+  /**
+   * Substitui todos os devedores (usado na importação)
+   */
+  replaceAll(debtors: Debtor[]): void {
+    this.debtors = [...debtors];
+    this.saveToStorage();
+  }
+
   private saveToStorage(): void {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.debtors));
   }

@@ -1,0 +1,7 @@
+{
+  "name": "data-export-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/data-export/feature/src",
+  "tags": ["type:feature", "scope:data-export"]
+}

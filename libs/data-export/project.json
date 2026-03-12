@@ -1,0 +1,7 @@
+{
+  "name": "data-export",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/data-export/src",
+  "tags": ["type:util", "scope:data-export"]
+}

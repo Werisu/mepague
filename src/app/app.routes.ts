@@ -37,6 +37,13 @@ export const appRoutes: Route[] = [
             (m) => m.DebtorsComponent
           ),
       },
+      {
+        path: 'dados',
+        loadComponent: () =>
+          import('@mepague/data-export-feature').then(
+            (m) => m.DadosComponent
+          ),
+      },
     ],
   },
 ];

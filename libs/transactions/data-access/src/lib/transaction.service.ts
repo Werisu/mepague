@@ -113,6 +113,17 @@ export class TransactionService {
   }
 
   /**
+   * Substitui todas as transações (usado na importação)
+   */
+  replaceAll(transactions: Array<Omit<Transaction, 'date'> & { date: string | Date }>): void {
+    this.transactions = transactions.map((t) => ({
+      ...t,
+      date: t.date instanceof Date ? t.date : new Date(t.date),
+    }));
+    this.saveToStorage();
+  }
+
+  /**
    * Persiste transações no localStorage
    */
   private saveToStorage(): void {

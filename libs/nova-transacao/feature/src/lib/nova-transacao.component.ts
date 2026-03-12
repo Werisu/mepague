@@ -26,6 +26,9 @@ export class NovaTransacaoComponent {
       value: formValue.value,
       description: formValue.description,
       date: new Date(formValue.date),
+      parcelado: formValue.parcelado,
+      parcelas: formValue.parcelas,
+      cartao: formValue.cartao || undefined,
     });
     this.router.navigate(['/dashboard']);
   }

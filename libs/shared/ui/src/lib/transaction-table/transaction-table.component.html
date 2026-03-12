@@ -17,7 +17,9 @@
           <tr class="bg-slate-50/80">
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Data</th>
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Descrição</th>
+            <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Cartão</th>
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Valor</th>
+            <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Parcelas</th>
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
             @if (showActions()) {
               <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Ações</th>
@@ -29,7 +31,15 @@
             <tr class="hover:bg-slate-50/50 transition-colors">
               <td class="px-6 py-4 text-sm text-slate-600 font-medium">{{ formatDate(transaction.date) }}</td>
               <td class="px-6 py-4 text-sm text-slate-800 font-medium">{{ transaction.description }}</td>
+              <td class="px-6 py-4 text-sm text-slate-600">{{ transaction.cartao || '—' }}</td>
               <td class="px-6 py-4 text-sm font-semibold text-slate-800 tabular-nums">{{ formatCurrency(transaction.value) }}</td>
+              <td class="px-6 py-4 text-sm text-slate-600">
+                @if (transaction.parcelado && transaction.parcelas) {
+                  {{ transaction.parcelas }}x
+                } @else {
+                  À vista
+                }
+              </td>
               <td class="px-6 py-4">
                 <span
                   class="inline-block px-3 py-1.5 rounded-lg text-xs font-semibold"

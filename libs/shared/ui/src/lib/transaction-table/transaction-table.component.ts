@@ -10,7 +10,12 @@ import { Transaction } from '@mepague/shared-util';
 })
 export class TransactionTableComponent {
   transactions = input.required<Transaction[]>();
+  /** Emite quando o usuário clica em "Marcar como pago" */
   statusToggle = output<Transaction>();
+  /** Emite quando o usuário clica em "Excluir" */
+  delete = output<Transaction>();
+  /** Se true, exibe coluna de ações (Marcar como pago, Excluir) */
+  showActions = input(true);
 
   formatDate(date: Date): string {
     return new Date(date).toLocaleDateString('pt-BR');
@@ -25,5 +30,10 @@ export class TransactionTableComponent {
 
   onToggleStatus(transaction: Transaction): void {
     this.statusToggle.emit(transaction);
+  }
+
+  onDelete(transaction: Transaction, event: Event): void {
+    event.stopPropagation();
+    this.delete.emit(transaction);
   }
 }

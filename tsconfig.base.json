@@ -15,6 +15,12 @@
       "@mepague/shared-ui": ["libs/shared/ui/src/index.ts"],
       "@mepague/dashboard-feature": [
         "libs/dashboard/feature/src/index.ts"
+      ],
+      "@mepague/nova-transacao-feature": [
+        "libs/nova-transacao/feature/src/index.ts"
+      ],
+      "@mepague/historico-feature": [
+        "libs/historico/feature/src/index.ts"
       ]
     }
   },

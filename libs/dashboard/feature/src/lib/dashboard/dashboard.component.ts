@@ -4,11 +4,12 @@ import { TransactionService } from '@mepague/transactions-data-access';
 import {
   PageHeaderComponent,
   SummaryCardComponent,
-  TransactionFormComponent,
   TransactionTableComponent,
 } from '@mepague/shared-ui';
-import type { TransactionFormValue } from '@mepague/shared-ui';
 
+/**
+ * Dashboard principal - exibe resumo e tabela de transações
+ */
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -16,7 +17,6 @@ import type { TransactionFormValue } from '@mepague/shared-ui';
     CommonModule,
     PageHeaderComponent,
     SummaryCardComponent,
-    TransactionFormComponent,
     TransactionTableComponent,
   ],
   templateUrl: './dashboard.component.html',
@@ -25,30 +25,26 @@ export class DashboardComponent {
   constructor(protected transactionService: TransactionService) {}
 
   get transactions() {
-    return this.transactionService.getAll();
+    return this.transactionService.getTransactions();
   }
 
   get totalEmprestado(): number {
-    return this.transactionService.getTotalEmprestado();
+    return this.transactionService.getTotalLoaned();
   }
 
-  get totalPago(): number {
-    return this.transactionService.getTotalPago();
+  get totalRecebido(): number {
+    return this.transactionService.getTotalPaid();
   }
 
   get saldoPendente(): number {
-    return this.transactionService.getSaldoPendente();
+    return this.transactionService.getPendingBalance();
   }
 
-  onAddTransaction(formValue: TransactionFormValue): void {
-    this.transactionService.add({
-      value: formValue.value,
-      description: formValue.description,
-      date: new Date(formValue.date),
-    });
+  onMarkAsPaid(transaction: { id: number }): void {
+    this.transactionService.markAsPaid(transaction.id);
   }
 
-  onToggleStatus(transaction: { id: number }): void {
-    this.transactionService.toggleStatus(transaction.id);
+  onDelete(transaction: { id: number }): void {
+    this.transactionService.deleteTransaction(transaction.id);
   }
 }

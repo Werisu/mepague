@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { TransactionService } from '@mepague/transactions-data-access';
 import { DebtorService } from '@mepague/debtors-data-access';
 import {
@@ -26,7 +27,8 @@ import {
 export class DashboardComponent {
   constructor(
     protected transactionService: TransactionService,
-    protected debtorService: DebtorService
+    protected debtorService: DebtorService,
+    private router: Router
   ) {}
 
   get debtors() {
@@ -55,5 +57,9 @@ export class DashboardComponent {
 
   onDelete(transaction: { id: number }): void {
     this.transactionService.deleteTransaction(transaction.id);
+  }
+
+  onEdit(transaction: { id: number }): void {
+    this.router.navigate(['/transacao', transaction.id, 'editar']);
   }
 }

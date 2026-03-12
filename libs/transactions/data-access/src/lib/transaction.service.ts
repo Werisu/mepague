@@ -73,6 +73,26 @@ export class TransactionService {
   }
 
   /**
+   * Retorna uma transação pelo ID
+   */
+  getById(id: number): Transaction | undefined {
+    return this.transactions.find((t) => t.id === id);
+  }
+
+  /**
+   * Atualiza uma transação existente
+   */
+  updateTransaction(
+    id: number,
+    data: Omit<Transaction, 'id' | 'status'>
+  ): void {
+    this.transactions = this.transactions.map((t) =>
+      t.id === id ? { ...t, ...data } : t
+    );
+    this.saveToStorage();
+  }
+
+  /**
    * Total emprestado (soma de todas as transações)
    */
   getTotalLoaned(): number {

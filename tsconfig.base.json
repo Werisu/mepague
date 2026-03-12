@@ -31,6 +31,9 @@
       "@mepague/data-export": ["libs/data-export/src/index.ts"],
       "@mepague/data-export-feature": [
         "libs/data-export/feature/src/index.ts"
+      ],
+      "@mepague/editar-transacao-feature": [
+        "libs/editar-transacao/feature/src/index.ts"
       ]
     }
   },

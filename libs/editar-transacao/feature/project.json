@@ -1,0 +1,7 @@
+{
+  "name": "editar-transacao-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/editar-transacao/feature/src",
+  "tags": ["type:feature", "scope:editar-transacao"]
+}

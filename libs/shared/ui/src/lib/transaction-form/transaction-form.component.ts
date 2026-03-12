@@ -1,8 +1,10 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import type { Transaction } from '@mepague/shared-util';
 
 export interface TransactionFormValue {
+  id?: number;
   value: number;
   description: string;
   date: string;
@@ -24,6 +26,8 @@ export class TransactionFormComponent {
 
   /** Lista de devedores para o select */
   debtors = input.required<{ id: number; name: string }[]>();
+  /** Transação para edição (modo edição) */
+  transaction = input<Transaction | null>(null);
 
   value = signal(0);
   description = signal('');
@@ -32,6 +36,29 @@ export class TransactionFormComponent {
   parcelado = signal(false);
   parcelas = signal(1);
   cartao = signal('');
+
+  constructor() {
+    effect(() => {
+      const t = this.transaction();
+      if (t) {
+        this.value.set(t.value);
+        this.description.set(t.description);
+        this.date.set(
+          t.date instanceof Date
+            ? t.date.toISOString().split('T')[0]
+            : new Date(t.date).toISOString().split('T')[0]
+        );
+        this.debtorId.set(t.debtorId ?? null);
+        this.parcelado.set(t.parcelado ?? false);
+        this.parcelas.set(t.parcelas ?? 1);
+        this.cartao.set(t.cartao ?? '');
+      }
+    });
+  }
+
+  get isEditMode(): boolean {
+    return !!this.transaction();
+  }
 
   onSubmit(): void {
     const desc = this.description().trim();
@@ -42,6 +69,7 @@ export class TransactionFormComponent {
     const parcelasVal = parceladoVal ? Math.max(1, this.parcelas()) : 1;
 
     this.submitForm.emit({
+      id: this.transaction()?.id,
       value: val,
       description: desc,
       date: this.date(),
@@ -51,12 +79,14 @@ export class TransactionFormComponent {
       cartao: this.cartao().trim(),
     });
 
-    this.value.set(0);
-    this.description.set('');
-    this.date.set(new Date().toISOString().split('T')[0]);
-    this.debtorId.set(null);
-    this.parcelado.set(false);
-    this.parcelas.set(1);
-    this.cartao.set('');
+    if (!this.isEditMode) {
+      this.value.set(0);
+      this.description.set('');
+      this.date.set(new Date().toISOString().split('T')[0]);
+      this.debtorId.set(null);
+      this.parcelado.set(false);
+      this.parcelas.set(1);
+      this.cartao.set('');
+    }
   }
 }

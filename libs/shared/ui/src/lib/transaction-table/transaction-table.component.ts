@@ -17,7 +17,9 @@ export class TransactionTableComponent {
   statusToggle = output<Transaction>();
   /** Emite quando o usuário clica em "Excluir" */
   delete = output<Transaction>();
-  /** Se true, exibe coluna de ações (Marcar como pago, Excluir) */
+  /** Emite quando o usuário clica em "Editar" */
+  edit = output<Transaction>();
+  /** Se true, exibe coluna de ações (Editar, Marcar como pago, Excluir) */
   showActions = input(true);
 
   getDebtorName(debtorId?: number): string {
@@ -39,6 +41,10 @@ export class TransactionTableComponent {
 
   onToggleStatus(transaction: Transaction): void {
     this.statusToggle.emit(transaction);
+  }
+
+  onEdit(transaction: Transaction): void {
+    this.edit.emit(transaction);
   }
 
   onDelete(transaction: Transaction, event: Event): void {

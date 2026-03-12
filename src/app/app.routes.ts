@@ -24,6 +24,13 @@ export const appRoutes: Route[] = [
           ),
       },
       {
+        path: 'transacao/:id/editar',
+        loadComponent: () =>
+          import('@mepague/editar-transacao-feature').then(
+            (m) => m.EditarTransacaoComponent
+          ),
+      },
+      {
         path: 'historico',
         loadComponent: () =>
           import('@mepague/historico-feature').then(

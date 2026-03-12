@@ -1,0 +1,42 @@
+<div class="max-w-7xl mx-auto px-4 py-10 md:px-6 md:py-12">
+  @if (!debtor) {
+    <div class="rounded-2xl bg-red-50 border border-red-200 p-6">
+      <p class="text-red-800 font-medium">Devedor não encontrado.</p>
+      <a routerLink="/devedores" class="mt-2 inline-block text-red-700 font-semibold hover:underline">
+        Voltar para Devedores →
+      </a>
+    </div>
+  } @else {
+    <app-page-header
+      [title]="debtor.name"
+      [subtitle]="'Dívidas de ' + debtor.name"
+    />
+
+    <!-- Cards de resumo do devedor -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+      <app-summary-card
+        label="Total utilizado"
+        [value]="totalUtilizado | currency:'BRL'"
+      />
+      <app-summary-card
+        label="Já te pagou"
+        [value]="totalPago | currency:'BRL'"
+        variant="paid"
+      />
+      <app-summary-card
+        label="Ainda te deve"
+        [value]="saldoPendente | currency:'BRL'"
+        variant="pending"
+      />
+    </section>
+
+    <!-- Tabela de transações do devedor -->
+    <app-transaction-table
+      [transactions]="transactions"
+      [debtors]="debtors"
+      (statusToggle)="onMarkAsPaid($event)"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+    />
+  }
+</div>

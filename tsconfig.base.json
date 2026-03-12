@@ -34,6 +34,12 @@
       ],
       "@mepague/editar-transacao-feature": [
         "libs/editar-transacao/feature/src/index.ts"
+      ],
+      "@mepague/devedor-detalhe-feature": [
+        "libs/devedor-detalhe/feature/src/index.ts"
+      ],
+      "@mepague/dividas-por-devedor-feature": [
+        "libs/dividas-por-devedor/feature/src/index.ts"
       ]
     }
   },

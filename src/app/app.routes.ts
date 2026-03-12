@@ -45,6 +45,20 @@ export const appRoutes: Route[] = [
           ),
       },
       {
+        path: 'dividas',
+        loadComponent: () =>
+          import('@mepague/dividas-por-devedor-feature').then(
+            (m) => m.DividasPorDevedorComponent
+          ),
+      },
+      {
+        path: 'devedor/:id',
+        loadComponent: () =>
+          import('@mepague/devedor-detalhe-feature').then(
+            (m) => m.DevedorDetalheComponent
+          ),
+      },
+      {
         path: 'dados',
         loadComponent: () =>
           import('@mepague/data-export-feature').then(

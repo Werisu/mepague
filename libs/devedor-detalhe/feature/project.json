@@ -1,0 +1,7 @@
+{
+  "name": "devedor-detalhe-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/devedor-detalhe/feature/src",
+  "tags": ["type:feature", "scope:devedor-detalhe"]
+}

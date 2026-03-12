@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { DebtorService } from '@mepague/debtors-data-access';
 
 /**
@@ -9,7 +10,7 @@ import { DebtorService } from '@mepague/debtors-data-access';
 @Component({
   selector: 'app-debtors',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './debtors.component.html',
   styleUrl: './debtors.component.scss',
 })

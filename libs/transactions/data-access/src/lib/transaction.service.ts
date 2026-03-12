@@ -18,6 +18,13 @@ export class TransactionService {
     return [...this.transactions];
   }
 
+  /**
+   * Retorna transações de um devedor específico
+   */
+  getTransactionsByDebtor(debtorId: number): Transaction[] {
+    return this.transactions.filter((t) => t.debtorId === debtorId);
+  }
+
   /** @deprecated Use getTransactions() */
   getAll(): Transaction[] {
     return this.getTransactions();

@@ -1,0 +1,7 @@
+{
+  "name": "dividas-por-devedor-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/dividas-por-devedor/feature/src",
+  "tags": ["type:feature", "scope:dividas-por-devedor"]
+}

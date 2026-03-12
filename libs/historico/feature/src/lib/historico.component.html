@@ -41,6 +41,7 @@ Não te pagou
   <!-- Tabela (sem ações de edição no histórico) -->
   <app-transaction-table
     [transactions]="filteredTransactions()"
+    [debtors]="debtors"
     [showActions]="false"
   />
 </div>

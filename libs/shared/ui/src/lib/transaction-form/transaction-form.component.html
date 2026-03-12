@@ -4,7 +4,23 @@
     Registrar valor usado
   </h2>
   <form class="flex flex-col gap-4" (ngSubmit)="onSubmit()">
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_2fr_1fr] gap-4">
+      <div class="flex flex-col gap-1.5">
+        <label class="text-sm font-semibold text-slate-600" for="devedor">Quem usou</label>
+        <select
+          id="devedor"
+          class="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition-all"
+          [ngModel]="debtorId()"
+          (ngModelChange)="debtorId.set($event)"
+          name="debtorId"
+          required
+        >
+          <option [ngValue]="null">Selecione o devedor</option>
+          @for (debtor of debtors(); track debtor.id) {
+            <option [ngValue]="debtor.id">{{ debtor.name }}</option>
+          }
+        </select>
+      </div>
       <div class="flex flex-col gap-1.5">
         <label class="text-sm font-semibold text-slate-600" for="valor">Valor</label>
         <input

@@ -25,6 +25,7 @@
   <!-- Tabela de transações -->
   <app-transaction-table
     [transactions]="transactions"
+    [debtors]="debtors"
     (statusToggle)="onMarkAsPaid($event)"
     (delete)="onDelete($event)"
   />

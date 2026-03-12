@@ -4,6 +4,8 @@ export interface Transaction {
   description: string;
   date: Date;
   status: 'PENDING' | 'PAID';
+  /** ID do devedor vinculado */
+  debtorId?: number;
   /** Se a compra foi parcelada */
   parcelado?: boolean;
   /** Número de parcelas (quando parcelado) */

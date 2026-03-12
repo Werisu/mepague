@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TransactionService } from '@mepague/transactions-data-access';
+import { DebtorService } from '@mepague/debtors-data-access';
 import {
   PageHeaderComponent,
   SummaryCardComponent,
@@ -23,7 +24,14 @@ import {
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  constructor(protected transactionService: TransactionService) {}
+  constructor(
+    protected transactionService: TransactionService,
+    protected debtorService: DebtorService
+  ) {}
+
+  get debtors() {
+    return this.debtorService.getAll();
+  }
 
   get transactions() {
     return this.transactionService.getTransactions();

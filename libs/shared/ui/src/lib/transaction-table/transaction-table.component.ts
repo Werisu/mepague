@@ -11,12 +11,20 @@ import { Transaction } from '@mepague/shared-util';
 })
 export class TransactionTableComponent {
   transactions = input.required<Transaction[]>();
+  /** Lista de devedores para resolver o nome pelo debtorId */
+  debtors = input<{ id: number; name: string }[]>([]);
   /** Emite quando o usuário clica em "Marcar como pago" */
   statusToggle = output<Transaction>();
   /** Emite quando o usuário clica em "Excluir" */
   delete = output<Transaction>();
   /** Se true, exibe coluna de ações (Marcar como pago, Excluir) */
   showActions = input(true);
+
+  getDebtorName(debtorId?: number): string {
+    if (!debtorId) return '—';
+    const debtor = this.debtors().find((d) => d.id === debtorId);
+    return debtor?.name ?? '—';
+  }
 
   formatDate(date: Date): string {
     return new Date(date).toLocaleDateString('pt-BR');

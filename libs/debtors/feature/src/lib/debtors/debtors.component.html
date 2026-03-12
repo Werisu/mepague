@@ -1,0 +1,55 @@
+<div class="max-w-[600px] mx-auto px-4 py-10 md:px-6 md:py-12">
+  <header class="mb-8">
+    <h1 class="text-3xl font-bold text-slate-800">Pessoas devedoras</h1>
+    <p class="mt-2 text-slate-500">Cadastre quem usa seu cartão ou pega dinheiro seu</p>
+  </header>
+
+  <!-- Formulário para novo devedor -->
+  <section class="rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-lg shadow-slate-200/50 p-6 mb-8">
+    <h2 class="text-lg font-bold text-slate-800 mb-4">Novo devedor</h2>
+    <form class="flex gap-4" (ngSubmit)="onAdd()">
+      <input
+        type="text"
+        class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500"
+        [(ngModel)]="newName"
+        name="newName"
+        placeholder="Nome da pessoa"
+        required
+      />
+      <button
+        type="submit"
+        class="px-6 py-2.5 rounded-xl font-semibold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 shadow-md transition-all"
+      >
+        Cadastrar
+      </button>
+    </form>
+  </section>
+
+  <!-- Lista de devedores -->
+  <section class="rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-lg shadow-slate-200/50 overflow-hidden">
+    <div class="px-6 py-5 border-b border-slate-200/80">
+      <h2 class="text-lg font-bold text-slate-800">Devedores cadastrados</h2>
+    </div>
+    @if (debtors.length === 0) {
+      <div class="px-6 py-16 text-center">
+        <p class="text-slate-500 font-medium">Nenhum devedor cadastrado.</p>
+        <p class="text-slate-400 text-sm mt-1">Cadastre acima para vincular às transações.</p>
+      </div>
+    } @else {
+      <ul class="divide-y divide-slate-100">
+        @for (debtor of debtors; track debtor.id) {
+          <li class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+            <span class="font-medium text-slate-800">{{ debtor.name }}</span>
+            <button
+              type="button"
+              class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-100 text-red-700 hover:bg-red-200 transition-colors"
+              (click)="onDelete(debtor.id)"
+            >
+              Excluir
+            </button>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+</div>

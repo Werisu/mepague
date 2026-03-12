@@ -21,6 +21,12 @@
       ],
       "@mepague/historico-feature": [
         "libs/historico/feature/src/index.ts"
+      ],
+      "@mepague/debtors-data-access": [
+        "libs/debtors/data-access/src/index.ts"
+      ],
+      "@mepague/debtors-feature": [
+        "libs/debtors/feature/src/index.ts"
       ]
     }
   },

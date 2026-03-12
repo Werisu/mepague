@@ -1,4 +1,4 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -6,6 +6,7 @@ export interface TransactionFormValue {
   value: number;
   description: string;
   date: string;
+  debtorId: number | null;
   parcelado: boolean;
   parcelas: number;
   cartao: string;
@@ -21,9 +22,13 @@ export interface TransactionFormValue {
 export class TransactionFormComponent {
   submitForm = output<TransactionFormValue>();
 
+  /** Lista de devedores para o select */
+  debtors = input.required<{ id: number; name: string }[]>();
+
   value = signal(0);
   description = signal('');
   date = signal(new Date().toISOString().split('T')[0]);
+  debtorId = signal<number | null>(null);
   parcelado = signal(false);
   parcelas = signal(1);
   cartao = signal('');
@@ -40,6 +45,7 @@ export class TransactionFormComponent {
       value: val,
       description: desc,
       date: this.date(),
+      debtorId: this.debtorId(),
       parcelado: parceladoVal,
       parcelas: parcelasVal,
       cartao: this.cartao().trim(),
@@ -48,6 +54,7 @@ export class TransactionFormComponent {
     this.value.set(0);
     this.description.set('');
     this.date.set(new Date().toISOString().split('T')[0]);
+    this.debtorId.set(null);
     this.parcelado.set(false);
     this.parcelas.set(1);
     this.cartao.set('');

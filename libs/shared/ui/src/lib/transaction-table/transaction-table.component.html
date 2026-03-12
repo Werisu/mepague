@@ -16,6 +16,7 @@
         <thead>
           <tr class="bg-slate-50/80">
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Data</th>
+            <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Devedor</th>
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Descrição</th>
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Cartão</th>
             <th class="px-6 py-4 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">Valor</th>
@@ -30,6 +31,7 @@
           @for (transaction of transactions(); track transaction.id) {
             <tr class="hover:bg-slate-50/50 transition-colors">
               <td class="px-6 py-4 text-sm text-slate-600 font-medium">{{ formatDate(transaction.date) }}</td>
+              <td class="px-6 py-4 text-sm text-slate-700 font-medium">{{ getDebtorName(transaction.debtorId) }}</td>
               <td class="px-6 py-4 text-sm text-slate-800 font-medium">{{ transaction.description }}</td>
               <td class="px-6 py-4 text-sm text-slate-600">{{ transaction.cartao || '—' }}</td>
               <td class="px-6 py-4 text-sm font-semibold text-slate-800 tabular-nums">{{ formatCurrency(transaction.value) }}</td>

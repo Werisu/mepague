@@ -1,6 +1,7 @@
 import { Component, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TransactionService } from '@mepague/transactions-data-access';
+import { DebtorService } from '@mepague/debtors-data-access';
 import { TransactionTableComponent } from '@mepague/shared-ui';
 
 type FilterType = 'all' | 'pending' | 'paid';
@@ -26,5 +27,12 @@ export class HistoricoComponent {
     return all;
   });
 
-  constructor(private transactionService: TransactionService) {}
+  get debtors() {
+    return this.debtorService.getAll();
+  }
+
+  constructor(
+    private transactionService: TransactionService,
+    private debtorService: DebtorService
+  ) {}
 }

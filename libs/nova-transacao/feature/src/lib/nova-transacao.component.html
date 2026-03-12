@@ -4,5 +4,17 @@
     <p class="mt-2 text-slate-500">Registre um valor que alguém usou de você</p>
   </header>
 
-  <app-transaction-form (submitForm)="onSubmit($event)" />
+  @if (debtors.length === 0) {
+    <div class="rounded-2xl bg-amber-50 border border-amber-200 p-6 mb-6">
+      <p class="text-amber-800 font-medium">Cadastre um devedor antes de registrar transações.</p>
+      <a routerLink="/devedores" class="mt-2 inline-block text-amber-700 font-semibold hover:underline">
+        Ir para Devedores →
+      </a>
+    </div>
+  } @else {
+    <app-transaction-form
+      [debtors]="debtors"
+      (submitForm)="onSubmit($event)"
+    />
+  }
 </div>

@@ -30,6 +30,13 @@ export const appRoutes: Route[] = [
             (m) => m.HistoricoComponent
           ),
       },
+      {
+        path: 'devedores',
+        loadComponent: () =>
+          import('@mepague/debtors-feature').then(
+            (m) => m.DebtorsComponent
+          ),
+      },
     ],
   },
 ];

@@ -1,22 +1,22 @@
 <div class="max-w-[920px] mx-auto px-4 py-10 md:px-6 md:py-12">
   <app-page-header
     title="Dashboard"
-    subtitle="Visão geral dos empréstimos"
+    subtitle="O que usaram de você e o que já te pagaram"
   />
 
   <!-- Cards de resumo -->
   <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
     <app-summary-card
-      label="Total emprestado"
+      label="Total utilizado"
       [value]="totalEmprestado | currency:'BRL'"
     />
     <app-summary-card
-      label="Total recebido"
+      label="Já te pagou"
       [value]="totalRecebido | currency:'BRL'"
       variant="paid"
     />
     <app-summary-card
-      label="Saldo pendente"
+      label="Ainda te deve"
       [value]="saldoPendente | currency:'BRL'"
       variant="pending"
     />

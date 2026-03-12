@@ -1,7 +1,7 @@
 <section class="rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-lg shadow-slate-200/50 p-6">
   <h2 class="text-lg font-bold text-slate-800 mb-5 flex items-center gap-2">
     <span class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 font-extrabold text-sm">+</span>
-    Novo lançamento
+    Registrar valor usado
   </h2>
   <form class="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr_auto] gap-4 items-end" (ngSubmit)="onSubmit()">
     <div class="flex flex-col gap-1.5">
@@ -28,7 +28,7 @@
         [ngModel]="description()"
         (ngModelChange)="description.set($event)"
         name="descricao"
-        placeholder="Ex: Empréstimo para almoço"
+        placeholder="Ex: Compra no cartão em 12x"
         required
       />
     </div>

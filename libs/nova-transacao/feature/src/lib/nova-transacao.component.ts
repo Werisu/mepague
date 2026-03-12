@@ -12,16 +12,8 @@ import type { TransactionFormValue } from '@mepague/shared-ui';
   selector: 'app-nova-transacao',
   standalone: true,
   imports: [TransactionFormComponent],
-  template: `
-    <div class="max-w-[600px] mx-auto px-4 py-10 md:px-6 md:py-12">
-      <header class="mb-8">
-        <h1 class="text-3xl font-bold text-slate-800">Nova Transação</h1>
-        <p class="mt-2 text-slate-500">Registre um novo valor emprestado</p>
-      </header>
-
-      <app-transaction-form (submitForm)="onSubmit($event)" />
-    </div>
-  `,
+  templateUrl: './nova-transacao.component.html',
+  styleUrl: './nova-transacao.component.scss',
 })
 export class NovaTransacaoComponent {
   constructor(

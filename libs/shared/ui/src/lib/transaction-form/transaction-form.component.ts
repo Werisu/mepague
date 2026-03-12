@@ -13,6 +13,7 @@ export interface TransactionFormValue {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './transaction-form.component.html',
+  styleUrl: './transaction-form.component.scss',
 })
 export class TransactionFormComponent {
   submitForm = output<TransactionFormValue>();

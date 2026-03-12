@@ -8,46 +8,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   selector: 'app-shell',
   standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet],
-  template: `
-    <div class="min-h-screen flex flex-col">
-      <!-- Header fixo -->
-      <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-200 shadow-sm">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <a routerLink="/dashboard" class="text-xl font-bold text-slate-800 hover:text-slate-600 transition-colors">
-            MePague
-          </a>
-          <nav class="flex gap-4">
-            <a
-              routerLink="/dashboard"
-              routerLinkActive="text-green-600 font-semibold"
-              [routerLinkActiveOptions]="{ exact: true }"
-              class="text-slate-600 hover:text-slate-800 transition-colors"
-            >
-              Dashboard
-            </a>
-            <a
-              routerLink="/nova-transacao"
-              routerLinkActive="text-green-600 font-semibold"
-              class="text-slate-600 hover:text-slate-800 transition-colors"
-            >
-              Nova Transação
-            </a>
-            <a
-              routerLink="/historico"
-              routerLinkActive="text-green-600 font-semibold"
-              class="text-slate-600 hover:text-slate-800 transition-colors"
-            >
-              Histórico
-            </a>
-          </nav>
-        </div>
-      </header>
-
-      <!-- Conteúdo -->
-      <main class="flex-1">
-        <router-outlet></router-outlet>
-      </main>
-    </div>
-  `,
+  templateUrl: './shell.component.html',
+  styleUrl: './shell.component.scss',
 })
 export class ShellComponent {}

@@ -1,10 +1,10 @@
-<div class="dashboard">
+<div class="max-w-[920px] mx-auto px-4 py-10 md:px-6 md:py-12">
   <app-page-header
     title="MePague"
     subtitle="Controle de valores emprestados"
   />
 
-  <section class="summary">
+  <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
     <app-summary-card
       label="Total emprestado"
       [value]="totalEmprestado | currency:'BRL'"
@@ -21,7 +21,9 @@
     />
   </section>
 
-  <app-transaction-form (submitForm)="onAddTransaction($event)" />
+  <div class="mb-8">
+    <app-transaction-form (submitForm)="onAddTransaction($event)" />
+  </div>
 
   <app-transaction-table
     [transactions]="transactions"

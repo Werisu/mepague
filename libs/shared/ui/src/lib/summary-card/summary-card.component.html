@@ -1,4 +1,20 @@
-<div class="summary-card" [class]="'summary-card--' + variant()">
-  <span class="summary-card__label">{{ label() }}</span>
-  <span class="summary-card__value">{{ value() }}</span>
+<div
+  class="flex flex-col gap-2 p-6 rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 hover:-translate-y-0.5"
+  [ngClass]="{
+    'border-l-4 border-l-indigo-500': variant() === 'default',
+    'border-l-4 border-l-emerald-500': variant() === 'paid',
+    'border-l-4 border-l-amber-500': variant() === 'pending'
+  }"
+>
+  <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">{{ label() }}</span>
+  <span
+    class="text-2xl font-bold tabular-nums"
+    [ngClass]="{
+      'text-slate-800': variant() === 'default',
+      'text-emerald-600': variant() === 'paid',
+      'text-amber-600': variant() === 'pending'
+    }"
+  >
+    {{ value() }}
+  </span>
 </div>

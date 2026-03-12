@@ -6,4 +6,9 @@
 @source "../libs/transactions/data-access";
 @source "../libs/dashboard/feature";
 
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  min-height: 100vh;
+}

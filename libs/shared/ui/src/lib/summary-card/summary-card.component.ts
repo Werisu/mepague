@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './summary-card.component.html',
-  styleUrl: './summary-card.component.scss',
 })
 export class SummaryCardComponent {
   label = input.required<string>();

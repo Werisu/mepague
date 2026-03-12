@@ -4,33 +4,14 @@ import { Component, input } from '@angular/core';
   selector: 'app-page-header',
   standalone: true,
   template: `
-    <header class="page-header">
-      <h1 class="page-header__title">{{ title() }}</h1>
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 bg-clip-text text-transparent drop-shadow-sm">
+        {{ title() }}
+      </h1>
       @if (subtitle()) {
-        <p class="page-header__subtitle">{{ subtitle() }}</p>
+        <p class="mt-2 text-slate-500 text-lg font-medium">{{ subtitle() }}</p>
       }
     </header>
-  `,
-  styles: `
-    .page-header {
-      margin-bottom: 2.5rem;
-      text-align: center;
-
-      &__title {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #1a1a2e;
-        margin: 0 0 0.25rem 0;
-        letter-spacing: -0.02em;
-      }
-
-      &__subtitle {
-        font-size: 0.9rem;
-        color: #6b7280;
-        margin: 0;
-        font-weight: 400;
-      }
-    }
   `,
 })
 export class PageHeaderComponent {

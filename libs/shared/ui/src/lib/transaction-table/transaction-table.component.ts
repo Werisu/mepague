@@ -7,7 +7,6 @@ import { Transaction } from '@mepague/shared-util';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './transaction-table.component.html',
-  styleUrl: './transaction-table.component.scss',
 })
 export class TransactionTableComponent {
   transactions = input.required<Transaction[]>();

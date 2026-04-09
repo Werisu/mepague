@@ -1,33 +1,37 @@
-<div class="max-w-7xl mx-auto px-4 py-10 md:px-6 md:py-12">
-  <app-page-header
-    title="Dashboard"
-    subtitle="O que usaram de você e o que já te pagaram"
-  />
+<div class="dashboard-shell">
+  <section class="dashboard-hero">
+    <div class="dashboard-hero__glow"></div>
+    <app-page-header
+      title="Dashboard"
+      subtitle="O que usaram de você e o que já te pagaram"
+      tone="light"
+    />
 
-  <!-- Cards de resumo -->
-  <section class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-    <app-summary-card
-      label="Total utilizado"
-      [value]="totalEmprestado | currency:'BRL'"
-    />
-    <app-summary-card
-      label="Já te pagou"
-      [value]="totalRecebido | currency:'BRL'"
-      variant="paid"
-    />
-    <app-summary-card
-      label="Ainda te deve"
-      [value]="saldoPendente | currency:'BRL'"
-      variant="pending"
-    />
+    <div class="dashboard-metrics">
+      <app-summary-card
+        label="Total utilizado"
+        [value]="totalEmprestado | currency:'BRL'"
+      />
+      <app-summary-card
+        label="Já te pagou"
+        [value]="totalRecebido | currency:'BRL'"
+        variant="paid"
+      />
+      <app-summary-card
+        label="Ainda te deve"
+        [value]="saldoPendente | currency:'BRL'"
+        variant="pending"
+      />
+    </div>
   </section>
 
-  <!-- Tabela de transações -->
-  <app-transaction-table
-    [transactions]="transactions"
-    [debtors]="debtors"
-    (statusToggle)="onMarkAsPaid($event)"
-    (edit)="onEdit($event)"
-    (delete)="onDelete($event)"
-  />
+  <section class="dashboard-table">
+    <app-transaction-table
+      [transactions]="transactions"
+      [debtors]="debtors"
+      (statusToggle)="onMarkAsPaid($event)"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+    />
+  </section>
 </div>

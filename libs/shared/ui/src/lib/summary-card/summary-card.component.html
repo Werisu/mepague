@@ -1,20 +1,23 @@
-<div
-  class="flex flex-col gap-2 p-6 rounded-2xl bg-white/90 backdrop-blur-sm border border-slate-200/80 shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 hover:-translate-y-0.5"
+<article
+  class="summary-card"
   [ngClass]="{
-    'border-l-4 border-l-slate-500': variant() === 'default',
-    'border-l-4 border-l-green-500': variant() === 'paid',
-    'border-l-4 border-l-red-500': variant() === 'pending'
+    'summary-card--default': variant() === 'default',
+    'summary-card--paid': variant() === 'paid',
+    'summary-card--pending': variant() === 'pending'
   }"
 >
-  <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">{{ label() }}</span>
-  <span
-    class="text-2xl font-bold tabular-nums"
-    [ngClass]="{
-      'text-slate-800': variant() === 'default',
-      'text-green-600': variant() === 'paid',
-      'text-red-600': variant() === 'pending'
-    }"
-  >
-    {{ value() }}
-  </span>
-</div>
+  <header class="summary-card__header">
+    <span class="summary-card__label">{{ label() }}</span>
+    <span class="summary-card__dot"></span>
+  </header>
+
+  <p class="summary-card__value">{{ value() }}</p>
+
+  <div class="summary-card__footer">
+    <span class="summary-card__badge">
+      {{
+        variant() === 'paid' ? 'Entradas' : variant() === 'pending' ? 'Pendências' : 'Total'
+      }}
+    </span>
+  </div>
+</article>

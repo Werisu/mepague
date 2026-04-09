@@ -1,1 +1,73 @@
-/* Dashboard - estilos via Tailwind no template */
+:host {
+  display: block;
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 500px at 20% -15%, rgba(147, 51, 234, 0.22), transparent 60%),
+    radial-gradient(900px 450px at 90% 0%, rgba(59, 130, 246, 0.12), transparent 65%),
+    #f5f3ff;
+}
+
+.dashboard-shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1rem 2.5rem;
+}
+
+.dashboard-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(160deg, #581c87 0%, #6d28d9 54%, #4c1d95 100%);
+  box-shadow:
+    0 20px 45px -24px rgba(76, 29, 149, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.dashboard-hero__glow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  top: -210px;
+  right: -60px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dashboard-metrics {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
+}
+
+.dashboard-table {
+  border-radius: 1.5rem;
+  padding: 0.95rem;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(221, 214, 254, 0.95);
+  box-shadow: 0 18px 35px -28px rgba(30, 41, 59, 0.65);
+}
+
+@media (min-width: 768px) {
+  .dashboard-shell {
+    padding: 2.3rem 1.5rem 3rem;
+  }
+
+  .dashboard-hero {
+    padding: 1.65rem;
+  }
+
+  .dashboard-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .dashboard-table {
+    padding: 1.15rem;
+  }
+}
